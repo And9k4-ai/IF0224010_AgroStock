@@ -2,9 +2,7 @@
 
 @section('content')
 
-<!-- ==========================================
-     STATISTIK UTAMA INVENTARIS
-     ========================================== -->
+
 <h3 class="mb-4">Dashboard AgroStock</h3>
 
 <div class="row">
@@ -56,7 +54,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header bg-success text-white d-flex justify-content-between align-items-center fw-bold">
-                <!-- Judul Lokasi Dinamis Hasil BigDataCloud Geocoding -->
+                
                 <span id="weatherTitle">🌤 Cuaca Hari Ini (Mencari Lokasi...)</span>
                 <small id="currentCoords" class="badge bg-light text-success">Mencari koordinat...</small>
             </div>
@@ -115,7 +113,7 @@
     }
 
     // ==========================================
-    // WEATHER CODE TRANSLATOR (WMO STANDARDS)
+    // WEATHER CODE TRANSLATOR 
     // ==========================================
     function weatherText(code){
         switch(code){
@@ -143,22 +141,22 @@
     // FETCH WEATHER DATA & REVERSE GEOCODING API
     // ==========================================
     function loadWeatherAndLocation(latitude, longitude){
-        // Menggunakan textContent demi alasan keamanan XSS pada manipulasi DOM data luar
+        
         document.getElementById('currentCoords').textContent = 
             `📍 Lat: ${latitude.toFixed(4)}, Lon: ${longitude.toFixed(4)}`;
 
-        // 1. REVERSE GEOCODING: BigDataCloud Client-Side API (100% Gratis Tanpa Key)
+        // 1. REVERSE GEOCODING:
         fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=id`)
         .then(res => res.json())
         .then(geoData => {
-            // Perluasan fallback berantai untuk mengantisipasi anomali null data pada node API tertentu
+            
             let namaLokasi = geoData.city || 
                              geoData.locality || 
                              geoData.principalSubdivision || 
                              geoData.localityInfo?.administrative?.[0]?.name || 
                              "Lokasi Tidak Diketahui";
             
-            // Membersihkan penamaan wilayah administratif bawaan Indonesia agar ringkas
+            
             namaLokasi = namaLokasi.replace("Kabupaten ", "").replace("Kota ", "");
             
             document.getElementById('weatherTitle').textContent = `🌤 Cuaca Hari Ini di ${namaLokasi}`;

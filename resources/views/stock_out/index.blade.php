@@ -2,9 +2,7 @@
 
 @section('content')
 
-<!-- ==========================================
-     HTML VIEW BARANG KELUAR
-     ========================================== -->
+
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h3>Barang Keluar</h3>
     <button
@@ -29,9 +27,7 @@
     </tbody>
 </table>
 
-<!-- ==========================================
-     MODAL TAMBAH BARANG KELUAR
-     ========================================== -->
+
 <div class="modal fade" id="addModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -85,28 +81,23 @@
 
 @push('scripts')
 <script>
-    // ==========================================
-    // INITIALIZATION & GLOBAL VARIABLES
-    // ==========================================
+    
     const csrfToken = document
         .querySelector('meta[name="csrf-token"]')
         .getAttribute('content');
 
     const table = document.getElementById('tableData');
 
-    // Load data pertama kali saat halaman dibuka
+    
     loadData();
 
-    // ==========================================
-    // EVENT LISTENERS
-    // ==========================================
+   
     document
         .getElementById('saveBtn')
         .addEventListener('click', saveData);
 
-    // ==========================================
-    // LOAD DATA BARANG KELUAR
-    // ==========================================
+
+
     function loadData() {
         fetch('/stock-outs/list')
         .then(res => res.json())
@@ -127,9 +118,7 @@
         });
     }
 
-    // ==========================================
-    // SIMPAN DATA BARANG KELUAR
-    // ==========================================
+
     function saveData() {
         fetch('/stock-outs', {
             method: 'POST',

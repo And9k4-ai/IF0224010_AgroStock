@@ -5,7 +5,7 @@
 <div class="container-fluid vh-100">
     <div class="row h-100">
 
-        <!-- LEFT SIDE -->
+        
         <div class="col-lg-6 d-none d-lg-flex align-items-center justify-content-center"
              style="background:linear-gradient(135deg,#198754,#43b97f);">
 
@@ -31,7 +31,7 @@
 
         </div>
 
-        <!-- RIGHT SIDE -->
+        
         <div class="col-lg-6 d-flex align-items-center justify-content-center bg-light">
 
             <div class="card shadow-lg border-0" style="width:420px; border-radius:15px;">

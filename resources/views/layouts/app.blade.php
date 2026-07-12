@@ -45,14 +45,14 @@
                         </a>
                     </li>
 
-                    <!-- Menu Tambahan: Barang Masuk -->
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('stockins.index') }}">
                             Barang Masuk
                         </a>
                     </li>
                     
-                    <!-- Menu Tambahan: Barang Keluar -->
+                    
                     <li class="nav-item">
                         <a class="nav-link"href="{{ route('stockouts.index') }}">
                             Barang Keluar

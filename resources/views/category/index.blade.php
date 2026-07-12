@@ -2,9 +2,8 @@
 
 @section('content')
 
-<!-- ==========================================
-     HTML VIEW KATEGORI
-     ========================================== -->
+
+
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h3>Data Kategori</h3>
 
@@ -33,7 +32,7 @@
         <tr>
             <th width="60">No</th>
             <th>Nama Kategori</th>
-            <!-- Kolom aksi hanya tampil untuk admin -->
+            
             @if(!$readonly)
                 <th width="180">Aksi</th>
             @endif
@@ -44,7 +43,7 @@
     </tbody>
 </table>
 
-<!-- Proteksi Keamanan: Modal hanya dikirim ke browser jika bukan readonly (Admin) -->
+
 @if(!$readonly)
     <!-- Modal Tambah -->
     <div class="modal fade" id="addModal" tabindex="-1">
@@ -90,9 +89,9 @@
 
 @push('scripts')
 <script>
-    // ==========================================
-    // INITIALIZATION & GLOBAL VARIABLES
-    // ==========================================
+    
+    
+    
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     const table = document.getElementById('tableData');
     const search = document.getElementById('search');
@@ -100,7 +99,7 @@
 
     loadData();
 
-    // Event Listeners (hanya inisialisasi jika elemen ada)
+    
     const saveBtn = document.getElementById('saveBtn');
     if (saveBtn) saveBtn.addEventListener('click', saveData);
 
@@ -111,9 +110,9 @@
         loadData(this.value);
     });
 
-    // ==========================================
+    
     // LOAD DATA
-    // ==========================================
+    
     function loadData(keyword=''){
         fetch(`/categories/list?search=${keyword}`)
         .then(res=>res.json())
@@ -141,9 +140,9 @@
         });
     }
 
-    // ==========================================
+    
     // FUNGSI CRUD (SAVE, EDIT, UPDATE, DELETE)
-    // ==========================================
+    
     function saveData(){
         fetch('/categories',{
             method:'POST',

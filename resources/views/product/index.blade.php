@@ -2,13 +2,10 @@
 
 @section('content')
 
-<!-- ==========================================
-     HTML VIEW BARANG
-     ========================================== -->
+
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h3>Data Barang</h3>
 
-    <!-- Menyembunyikan tombol Tambah jika akun berstatus readonly -->
     @if(!$readonly)
         <button
             class="btn btn-success"
@@ -40,7 +37,7 @@
             <th>Stok</th>
             <th>Satuan</th>
             <th>Harga</th>
-            <!-- Kolom aksi hanya tampil untuk admin -->
+            
             @if(!$readonly)
                 <th width="180">Aksi</th>
             @endif
@@ -51,7 +48,7 @@
     </tbody>
 </table>
 
-<!-- Proteksi Keamanan: Modal hanya dikirim ke browser jika bukan readonly (Admin) -->
+
 @if(!$readonly)
     <!-- modal tambah -->
     <div class="modal fade" id="addModal" tabindex="-1">
@@ -132,20 +129,15 @@
 <!-- ajax javascript -->
 @push('scripts')
 <script>
-    // ==========================================
-    // INITIALIZATION & GLOBAL VARIABLES
-    // ==========================================
+    
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     const table = document.getElementById('tableData');
     const search = document.getElementById('search');
     const isReadonly = @json($readonly);
 
-    // Pertama kali halaman dibuka, langsung load data
+
     loadData();
 
-    // ==========================================
-    // EVENT LISTENERS
-    // ==========================================
     const saveBtn = document.getElementById('saveBtn');
     if (saveBtn) {
         saveBtn.addEventListener('click', saveData);
@@ -170,9 +162,9 @@
         }).format(angka);
     }
 
-    // ==========================================
+
     // LOAD DATA
-    // ==========================================
+
     function loadData(keyword=''){
         fetch(`/products/list?search=${keyword}`)
         .then(res=>res.json())
@@ -205,9 +197,9 @@
         });
     }
 
-    // ==========================================
+
     // SIMPAN DATA
-    // ==========================================
+
     function saveData() {
         fetch('/products', {
             method: 'POST',
@@ -256,9 +248,9 @@
         });
     }
 
-    // ==========================================
+
     // EDIT DATA
-    // ==========================================
+
     function editData(id){
         fetch(`/products/${id}/edit`)
         .then(res=>res.json())
@@ -275,9 +267,9 @@
         });
     }
 
-    // ==========================================
-    // UPDATE DATA (Pola penanganan error sudah disamakan)
-    // ==========================================
+
+    // UPDATE DATA 
+
     function updateData(){
         let id=document.getElementById('edit_id').value;
 
@@ -321,9 +313,9 @@
         });
     }
 
-    // ==========================================
+
     // HAPUS DATA
-    // ==========================================
+
     function deleteData(id){
         Swal.fire({
             title:'Hapus data?',

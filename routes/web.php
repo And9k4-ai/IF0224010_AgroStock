@@ -40,7 +40,7 @@ Route::middleware(['auth'])->group(function () {
 // ==========================================
 Route::middleware(['auth', 'role:admin'])->group(function () {
 
-    // Kategori - Aksi Modifikasi Data (CRUD)
+   
     Route::controller(CategoryController::class)->prefix('categories')->group(function () {
         Route::post('/', 'store')->name('categories.store');
         Route::get('/{id}/edit', 'edit')->name('categories.edit');
@@ -48,7 +48,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::delete('/{id}', 'destroy')->name('categories.destroy');
     });
 
-    // Barang - Aksi Modifikasi Data (CRUD)
+    
     Route::controller(ProductController::class)->prefix('products')->group(function () {
         Route::post('/', 'store')->name('products.store');
         Route::get('/{id}/edit', 'edit')->name('products.edit');
@@ -56,14 +56,14 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::delete('/{id}', 'destroy')->name('products.destroy');
     });
 
-    // Transaksi Barang Masuk
+    
     Route::controller(StockInController::class)->prefix('stock-ins')->group(function () {
         Route::get('/', 'index')->name('stockins.index');
         Route::get('/list', 'list')->name('stockins.list');
         Route::post('/', 'store')->name('stockins.store');
     });
 
-    // Transaksi Barang Keluar
+  
     Route::controller(StockOutController::class)->prefix('stock-outs')->group(function () {
         Route::get('/', 'index')->name('stockouts.index');
         Route::get('/list', 'list')->name('stockouts.list');
@@ -71,5 +71,5 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
 });
 
-// Include route bawaan Laravel Breeze/Jetstream
+
 require __DIR__.'/auth.php';
